@@ -1,0 +1,64 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  url?: string;
+  author?: string;
+}
+
+const {
+  title,
+  description,
+  image = 'https://odyssey.dev/og-image.png',
+  url = 'https://odyssey.dev',
+  author = 'Odyssey'
+} = Astro.props;
+
+const currentUrl = new URL(Astro.request.url).href;
+---
+
+<!-- Primary Meta Tags -->
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<meta name="author" content={author} />
+<meta name="keywords" content="desarrollo web, aplicaciones web, landing pages, diseño web, freelancer, desarrollo custom" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={currentUrl} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={image} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={currentUrl} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={image} />
+
+<!-- Canonical -->
+<link rel="canonical" href={currentUrl} />
+
+<!-- Structured Data (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Odyssey",
+  "description": "Desarrollo de aplicaciones web profesionales",
+  "url": "https://odyssey.dev",
+  "logo": "https://odyssey.dev/logo.svg",
+  "sameAs": [
+    "https://twitter.com/odysseydev",
+    "https://linkedin.com/company/odyssey",
+    "https://github.com/odysseydev"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "Customer Support",
+    "email": "hola@odyssey.dev"
+  }
+}
+</script>
