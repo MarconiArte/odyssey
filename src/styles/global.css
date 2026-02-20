@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@layer components {
+  /* Gradient text utility */
+  .gradient-text {
+    @apply bg-gradient-to-r from-violet-400 to-purple-600 bg-clip-text text-transparent;
+  }
+
+  /* Button gradient primary */
+  .btn-primary {
+    @apply px-8 py-4 bg-gradient-to-r from-violet-500 to-purple-600 hover:from-violet-600 hover:to-purple-700 rounded-lg font-semibold transition transform hover:scale-105;
+  }
+
+  /* Card with gradient border effect */
+  .card-gradient {
+    @apply p-8 bg-gradient-to-br from-gray-900 to-black border border-violet-500/20 rounded-xl hover:border-violet-500/50 transition;
+  }
+
+  /* Center container with proper max-width */
+  .container-center {
+    @apply max-w-7xl mx-auto px-6 lg:px-8;
+  }
+}
+
+@layer utilities {
+  /* Smooth fade animation */
+  .fade-in {
+    animation: fadeIn 0.6s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Glow effect for violet */
+  .glow-violet {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+  }
+}
