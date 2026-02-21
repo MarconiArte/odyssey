@@ -11,6 +11,13 @@
         </svg>
       </button>
     </div>
+
+    <!-- Toast de alerta -->
+    <div id="alertToast" class="hidden fixed top-4 right-4 z-[60] animate-fade-in">
+      <div id="alertContent" class="bg-green-500/20 border border-green-500/50 rounded-lg px-4 py-3 text-green-200 max-w-sm">
+        <p id="alertMessage"></p>
+      </div>
+    </div>
     
     <form id="contactForm" class="space-y-4">
       <div>
@@ -101,6 +108,27 @@
       contactForm.reset();
     }
 
+    // Función para mostrar alerta
+    function showAlert(message, type = 'success') {
+      const alertToast = document.getElementById('alertToast');
+      const alertContent = document.getElementById('alertContent');
+      const alertMessage = document.getElementById('alertMessage');
+
+      alertMessage.textContent = message;
+      
+      if (type === 'success') {
+        alertContent.className = 'bg-green-500/20 border border-green-500/50 rounded-lg px-4 py-3 text-green-200 max-w-sm';
+      } else if (type === 'error') {
+        alertContent.className = 'bg-red-500/20 border border-red-500/50 rounded-lg px-4 py-3 text-red-200 max-w-sm';
+      }
+
+      alertToast.classList.remove('hidden');
+      
+      setTimeout(() => {
+        alertToast.classList.add('hidden');
+      }, 4000);
+    }
+
     // Manejar envío del formulario
     contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -126,14 +154,15 @@
         const result = await response.json();
 
         if (response.ok) {
-          alert('¡Gracias! Tu mensaje ha sido enviado correctamente. Te responderemos pronto.');
-          closeModal();
+          showAlert('¡Gracias! Tu mensaje ha sido enviado correctamente. Te responderemos pronto.', 'success');
+          contactForm.reset();
+          setTimeout(() => closeModal(), 2000);
         } else {
-          alert('Error al enviar el mensaje: ' + (result.error || 'Intenta nuevamente'));
+          showAlert('Error al enviar el mensaje: ' + (result.error || 'Intenta nuevamente'), 'error');
         }
       } catch (error) {
         console.error('Error:', error);
-        alert('Error al enviar el mensaje. Intenta nuevamente.');
+        showAlert('Error al enviar el mensaje. Intenta nuevamente.', 'error');
       } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = originalText;
