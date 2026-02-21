@@ -1,6 +1,5 @@
 ---
 import "../styles/global.css";
-import ContactModal from "./ContactModal.astro";
 ---
 
 <div class="min-h-screen text-white overflow-x-hidden">
@@ -71,12 +70,13 @@ import ContactModal from "./ContactModal.astro";
 						estamos aquí para llevar tu negocio al siguiente nivel.
 					</p>
 					<div class="flex gap-4 justify-center">
-						<button
-							data-contact-modal
+						<a
+							href="https://wa.me/542215997581?text=Hola!%20Me%20gustaría%20obtener%20más%20información%20sobre%20los%20servicios%20de%20Odyssey"
+							target="_blank"
 							class="px-8 py-4 bg-gradient-to-r from-violet-500 to-purple-600 hover:from-violet-600 hover:to-purple-700 rounded-lg font-semibold transition cursor-pointer"
 						>
 							Comenzar Proyecto
-						</button>
+						</a>
 						<button
 							class="px-8 py-4 border border-violet-500 text-violet-400 hover:bg-violet-500/10 rounded-lg font-semibold transition cursor-pointer"
 						>
@@ -424,5 +424,3 @@ import ContactModal from "./ContactModal.astro";
 		</div>
 	</footer>
 </div>
-
-<ContactModal />

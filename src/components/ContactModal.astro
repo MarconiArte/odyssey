@@ -19,12 +19,7 @@
       </div>
     </div>
     
-    <form id="contactForm" class="space-y-4" data-netlify="true" netlify-honeypot="bot-field">
-      <!-- Honeypot anti-spam field (invisible para humanos, visible para bots) -->
-      <p class="hidden">
-        <label>No llenes esto si sos humano: <input name="bot-field" /></label>
-      </p>
-
+    <form id="contactForm" class="space-y-4">
       <div>
         <label class="block text-sm font-semibold text-gray-300 mb-2">Nombre</label>
         <input
@@ -134,40 +129,43 @@
       }, 4000);
     }
 
-    // Manejar envío del formulario
-    contactForm.addEventListener('submit', async (e) => {
+    // Manejar envío del formulario - Redireccionar a WhatsApp
+    contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
       
       const submitBtn = contactForm.querySelector('button[type="submit"]');
       const originalText = submitBtn.textContent;
       submitBtn.disabled = true;
-      submitBtn.textContent = 'Enviando...';
+      submitBtn.textContent = 'Abriendo WhatsApp...';
 
       try {
-        const formData = {
-          name: contactForm.querySelector('input[name="name"]').value,
-          email: contactForm.querySelector('input[name="email"]').value,
-          project: contactForm.querySelector('select[name="project"]').value,
-          message: contactForm.querySelector('textarea[name="message"]').value,
-        };
+        const name = contactForm.querySelector('input[name="name"]').value;
+        const email = contactForm.querySelector('input[name="email"]').value;
+        const project = contactForm.querySelector('select[name="project"]').value;
+        const message = contactForm.querySelector('textarea[name="message"]').value;
 
-        const response = await fetch('/.netlify/functions/sendEmail', {
-          method: 'POST',
-          body: JSON.stringify(formData),
-        });
+        // Construir mensaje para WhatsApp
+        const whatsappMessage = `Hola! Mi nombre es ${name}\n\nEmail: ${email}\n\nTipo de Proyecto: ${project || 'No especificado'}\n\nMensaje: ${message}`;
+        
+        // Número de WhatsApp sin símbolos (51 + número)
+        const whatsappNumber = '51221599758'; // +51 221 599 7581
+        const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
-        const result = await response.json();
+        // Mostrar alerta de éxito
+        showAlert('¡Gracias! Te redirigimos a WhatsApp para completar tu consulta.', 'success');
+        
+        // Resetear y cerrar modal
+        contactForm.reset();
+        
+        // Abrir WhatsApp después de un pequeño delay
+        setTimeout(() => {
+          window.open(whatsappURL, '_blank');
+          closeModal();
+        }, 1500);
 
-        if (response.ok) {
-          showAlert('¡Gracias! Tu mensaje ha sido enviado correctamente. Te responderemos pronto.', 'success');
-          contactForm.reset();
-          setTimeout(() => closeModal(), 2000);
-        } else {
-          showAlert('Error al enviar el mensaje: ' + (result.error || 'Intenta nuevamente'), 'error');
-        }
       } catch (error) {
         console.error('Error:', error);
-        showAlert('Error al enviar el mensaje. Intenta nuevamente.', 'error');
+        showAlert('Error al procesar tu mensaje. Intenta nuevamente.', 'error');
       } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = originalText;
