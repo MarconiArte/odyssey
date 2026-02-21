@@ -1,8 +1,9 @@
 ---
 import "../styles/global.css";
+import ContactModal from "./ContactModal.astro";
 ---
 
-<div class="min-h-screen bg-black text-white overflow-x-hidden">
+<div class="min-h-screen text-white overflow-x-hidden">
 	<!-- Navigation -->
 	<nav
 		class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-violet-500/20"
@@ -13,7 +14,7 @@ import "../styles/global.css";
 			<div
 				class="text-2xl font-bold bg-gradient-to-r from-violet-400 to-purple-600 bg-clip-text text-transparent"
 			>
-				odyssey.dev
+				odysseydev
 			</div>
 			<ul class="hidden md:flex gap-8">
 				<li>
@@ -52,8 +53,8 @@ import "../styles/global.css";
 		</div>
 
 		<div class="max-w-7xl mx-auto">
-			<div class="grid md:grid-cols-2 gap-12 items-center">
-				<div>
+			<div class="flex justify-center">
+				<div class="text-center max-w-3xl">
 					<h1
 						class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
 					>
@@ -69,29 +70,18 @@ import "../styles/global.css";
 						calidad. Desde landing pages hasta sistemas complejos,
 						estamos aquí para llevar tu negocio al siguiente nivel.
 					</p>
-					<div class="flex gap-4">
+					<div class="flex gap-4 justify-center">
 						<button
-							class="px-8 py-4 bg-gradient-to-r from-violet-500 to-purple-600 hover:from-violet-600 hover:to-purple-700 rounded-lg font-semibold transition transform hover:scale-105"
+							data-contact-modal
+							class="px-8 py-4 bg-gradient-to-r from-violet-500 to-purple-600 hover:from-violet-600 hover:to-purple-700 rounded-lg font-semibold transition cursor-pointer"
 						>
 							Comenzar Proyecto
 						</button>
 						<button
-							class="px-8 py-4 border border-violet-500 text-violet-400 hover:bg-violet-500/10 rounded-lg font-semibold transition"
+							class="px-8 py-4 border border-violet-500 text-violet-400 hover:bg-violet-500/10 rounded-lg font-semibold transition cursor-pointer"
 						>
 							Ver Portafolio
 						</button>
-					</div>
-				</div>
-				<div class="relative">
-					<div
-						class="aspect-square bg-gradient-to-br from-violet-500/20 to-purple-600/20 rounded-2xl border border-violet-500/30 flex items-center justify-center"
-					>
-						<div class="text-center">
-							<div class="text-6xl mb-4">🚀</div>
-							<p class="text-violet-400">
-								Desarrollo Web Profesional
-							</p>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -109,7 +99,7 @@ import "../styles/global.css";
 			</h2>
 			<div class="grid md:grid-cols-3 gap-8">
 				<div
-					class="p-8 bg-gradient-to-br from-gray-900 to-black border border-violet-500/20 rounded-xl hover:border-violet-500/50 transition"
+					class="p-8 bg-gradient-to-br from-gray-900 to-black border border-violet-500/20 rounded-xl"
 				>
 					<div class="text-4xl mb-4">💡</div>
 					<h3 class="text-xl font-bold mb-4 text-violet-400">
@@ -121,7 +111,7 @@ import "../styles/global.css";
 					</p>
 				</div>
 				<div
-					class="p-8 bg-gradient-to-br from-gray-900 to-black border border-violet-500/20 rounded-xl hover:border-violet-500/50 transition"
+					class="p-8 bg-gradient-to-br from-gray-900 to-black border border-violet-500/20 rounded-xl"
 				>
 					<div class="text-4xl mb-4">⚡</div>
 					<h3 class="text-xl font-bold mb-4 text-violet-400">
@@ -133,7 +123,7 @@ import "../styles/global.css";
 					</p>
 				</div>
 				<div
-					class="p-8 bg-gradient-to-br from-gray-900 to-black border border-violet-500/20 rounded-xl hover:border-violet-500/50 transition"
+					class="p-8 bg-gradient-to-br from-gray-900 to-black border border-violet-500/20 rounded-xl"
 				>
 					<div class="text-4xl mb-4">🎯</div>
 					<h3 class="text-xl font-bold mb-4 text-violet-400">
@@ -143,6 +133,43 @@ import "../styles/global.css";
 						Enfoque en tus objetivos de negocio. Cada proyecto es
 						una oportunidad de éxito.
 					</p>
+				</div>
+			</div>
+
+			<!-- Team Section -->
+			<div class="mt-16 pt-16 border-t border-violet-500/20">
+				<h3 class="text-3xl font-bold mb-8 text-center text-violet-300">
+					Nuestro Equipo
+				</h3>
+				<div class="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+					<div
+						class="p-8 bg-gradient-to-br from-purple-900/30 to-violet-900/30 border border-violet-500/30 rounded-xl hover:border-violet-500/60 transition"
+					>
+						<div class="text-5xl mb-4">💻</div>
+						<h4 class="text-2xl font-bold mb-2 text-violet-300">
+							Marcos Niz
+						</h4>
+						<p class="text-violet-400 font-semibold mb-3">
+							Desarrollador
+						</p>
+						<p class="text-gray-400">
+							Experto en tecnologías web modernas. Responsable de la arquitectura y desarrollo de nuestros proyectos.
+						</p>
+					</div>
+					<div
+						class="p-8 bg-gradient-to-br from-purple-900/30 to-violet-900/30 border border-violet-500/30 rounded-xl hover:border-violet-500/60 transition"
+					>
+						<div class="text-5xl mb-4">📈</div>
+						<h4 class="text-2xl font-bold mb-2 text-violet-300">
+							Tobias Cañedo
+						</h4>
+						<p class="text-violet-400 font-semibold mb-3">
+							Marketing
+						</p>
+						<p class="text-gray-400">
+							Especialista en estrategia digital y crecimiento. Llevamos tu negocio a nuevos mercados.
+						</p>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -159,69 +186,53 @@ import "../styles/global.css";
 			</h2>
 			<div class="grid md:grid-cols-2 gap-8">
 				<div
-					class="group p-8 bg-gradient-to-br from-purple-900/20 to-violet-900/20 border border-violet-500/30 rounded-xl hover:border-violet-500/60 transition cursor-pointer overflow-hidden"
+					class="p-8 bg-gradient-to-br from-purple-900/20 to-violet-900/20 border border-violet-500/30 rounded-xl overflow-hidden"
 				>
-					<div
-						class="absolute inset-0 bg-gradient-to-r from-violet-600 to-purple-600 opacity-0 group-hover:opacity-5 transition"
-					>
-					</div>
 					<h3
-						class="text-2xl font-bold mb-4 text-violet-300 relative"
+						class="text-2xl font-bold mb-4 text-violet-300"
 					>
 						Landing Pages
 					</h3>
-					<p class="text-gray-400 relative">
+					<p class="text-gray-400">
 						Diseño moderno y responsivo para captar la atención de
 						tus clientes desde el primer momento.
 					</p>
 				</div>
 				<div
-					class="group p-8 bg-gradient-to-br from-purple-900/20 to-violet-900/20 border border-violet-500/30 rounded-xl hover:border-violet-500/60 transition cursor-pointer overflow-hidden"
+					class="p-8 bg-gradient-to-br from-purple-900/20 to-violet-900/20 border border-violet-500/30 rounded-xl overflow-hidden"
 				>
-					<div
-						class="absolute inset-0 bg-gradient-to-r from-violet-600 to-purple-600 opacity-0 group-hover:opacity-5 transition"
-					>
-					</div>
 					<h3
-						class="text-2xl font-bold mb-4 text-violet-300 relative"
+						class="text-2xl font-bold mb-4 text-violet-300"
 					>
 						Aplicaciones Web
 					</h3>
-					<p class="text-gray-400 relative">
+					<p class="text-gray-400">
 						Sistemas complejos y escalables construidos con
 						tecnologías modernas y mejores prácticas.
 					</p>
 				</div>
 				<div
-					class="group p-8 bg-gradient-to-br from-purple-900/20 to-violet-900/20 border border-violet-500/30 rounded-xl hover:border-violet-500/60 transition cursor-pointer overflow-hidden"
+					class="p-8 bg-gradient-to-br from-purple-900/20 to-violet-900/20 border border-violet-500/30 rounded-xl overflow-hidden"
 				>
-					<div
-						class="absolute inset-0 bg-gradient-to-r from-violet-600 to-purple-600 opacity-0 group-hover:opacity-5 transition"
-					>
-					</div>
 					<h3
-						class="text-2xl font-bold mb-4 text-violet-300 relative"
+						class="text-2xl font-bold mb-4 text-violet-300"
 					>
 						Optimización
 					</h3>
-					<p class="text-gray-400 relative">
+					<p class="text-gray-400">
 						Performance, SEO y UX mejorados para maximizar tu
 						presencia en línea.
 					</p>
 				</div>
 				<div
-					class="group p-8 bg-gradient-to-br from-purple-900/20 to-violet-900/20 border border-violet-500/30 rounded-xl hover:border-violet-500/60 transition cursor-pointer overflow-hidden"
+					class="p-8 bg-gradient-to-br from-purple-900/20 to-violet-900/20 border border-violet-500/30 rounded-xl overflow-hidden"
 				>
-					<div
-						class="absolute inset-0 bg-gradient-to-r from-violet-600 to-purple-600 opacity-0 group-hover:opacity-5 transition"
-					>
-					</div>
 					<h3
-						class="text-2xl font-bold mb-4 text-violet-300 relative"
+						class="text-2xl font-bold mb-4 text-violet-300"
 					>
 						Consultoría Tech
 					</h3>
-					<p class="text-gray-400 relative">
+					<p class="text-gray-400">
 						Asesoramiento experto para elegir la mejor stack
 						tecnológica para tu proyecto.
 					</p>
@@ -239,81 +250,58 @@ import "../styles/global.css";
 			<h2 class="text-4xl md:text-5xl font-bold mb-12 text-center">
 				Nuestro Portafolio
 			</h2>
-			<div class="grid md:grid-cols-2 gap-8">
-				<div class="group relative overflow-hidden rounded-xl">
-					<div
-						class="aspect-video bg-gradient-to-br from-violet-600/30 to-purple-600/30 border border-violet-500/30 rounded-xl p-8 flex flex-col justify-between"
-					>
+			<div class="grid md:grid-cols-2 gap-12 items-center">
+				<!-- Contenido -->
+				<div>
+					<h3 class="text-4xl font-bold mb-4 text-violet-300">
+						Sistema de Gestión de Turnos
+					</h3>
+					<p class="text-lg text-gray-300 mb-6 leading-relaxed">
+						Una aplicación web completa para la gestión de reservas y turnos. 
+						Desarrollada con Angular y Firebase, permite a los usuarios agendar citas, 
+						realizar un seguimiento de sus turnos y recibir notificaciones en tiempo real.
+					</p>
+					<div class="space-y-4">
 						<div>
-							<h3 class="text-2xl font-bold mb-2 text-violet-300">
-								Proyecto 1
-							</h3>
-							<p class="text-gray-400">
-								Landing Page con efecto parallax
-							</p>
+							<h4 class="text-lg font-semibold text-violet-400 mb-2">Características principales:</h4>
+							<ul class="text-gray-400 space-y-2">
+								<li class="flex items-start">
+									<span class="text-violet-300 mr-3">✓</span>
+									<span>Autenticación segura con Firebase</span>
+								</li>
+								<li class="flex items-start">
+									<span class="text-violet-300 mr-3">✓</span>
+									<span>Calendario interactivo para reservas</span>
+								</li>
+								<li class="flex items-start">
+									<span class="text-violet-300 mr-3">✓</span>
+									<span>Panel de administración para gestión</span>
+								</li>
+								<li class="flex items-start">
+									<span class="text-violet-300 mr-3">✓</span>
+									<span>Interfaz responsiva y moderna</span>
+								</li>
+							</ul>
 						</div>
-						<span
-							class="inline-block w-fit px-4 py-2 bg-violet-500/20 text-violet-300 rounded-lg border border-violet-500/40"
-						>
-							React + TailwindCSS
-						</span>
+						<div>
+							<span class="inline-block px-4 py-2 bg-violet-500/20 text-violet-300 rounded-lg border border-violet-500/40 font-semibold">
+								Angular + Firebase
+							</span>
+						</div>
 					</div>
 				</div>
-				<div class="group relative overflow-hidden rounded-xl">
+
+				<!-- Imagen -->
+				<div class="relative overflow-hidden rounded-2xl">
 					<div
-						class="aspect-video bg-gradient-to-br from-violet-600/30 to-purple-600/30 border border-violet-500/30 rounded-xl p-8 flex flex-col justify-between"
+						class="aspect-square bg-gradient-to-br from-violet-600/30 to-purple-600/30 border border-violet-500/30 rounded-2xl p-8 flex items-center justify-center"
 					>
-						<div>
-							<h3 class="text-2xl font-bold mb-2 text-violet-300">
-								Sistema de Turnos
-							</h3>
-							<p class="text-gray-400">
-								Gestión completa de reservas con autenticación Firebase
+						<div class="text-center">
+							<div class="text-8xl mb-4">📅</div>
+							<p class="text-violet-300 text-lg font-semibold">
+								App de Gestión de Turnos
 							</p>
 						</div>
-						<span
-							class="inline-block w-fit px-4 py-2 bg-violet-500/20 text-violet-300 rounded-lg border border-violet-500/40"
-						>
-							Angular + Firebase
-						</span>
-					</div>
-				</div>
-				<div class="group relative overflow-hidden rounded-xl">
-					<div
-						class="aspect-video bg-gradient-to-br from-violet-600/30 to-purple-600/30 border border-violet-500/30 rounded-xl p-8 flex flex-col justify-between"
-					>
-						<div>
-							<h3 class="text-2xl font-bold mb-2 text-violet-300">
-								Dashboard analítico
-							</h3>
-							<p class="text-gray-400">
-								Panel de control con métricas en tiempo real
-							</p>
-						</div>
-						<span
-							class="inline-block w-fit px-4 py-2 bg-violet-500/20 text-violet-300 rounded-lg border border-violet-500/40"
-						>
-							Vue 3 + Firebase
-						</span>
-					</div>
-				</div>
-				<div class="group relative overflow-hidden rounded-xl">
-					<div
-						class="aspect-video bg-gradient-to-br from-violet-600/30 to-purple-600/30 border border-violet-500/30 rounded-xl p-8 flex flex-col justify-between"
-					>
-						<div>
-							<h3 class="text-2xl font-bold mb-2 text-violet-300">
-								E-commerce
-							</h3>
-							<p class="text-gray-400">
-								Plataforma de ventas online completa
-							</p>
-						</div>
-						<span
-							class="inline-block w-fit px-4 py-2 bg-violet-500/20 text-violet-300 rounded-lg border border-violet-500/40"
-						>
-							Next.js + Stripe
-						</span>
 					</div>
 				</div>
 			</div>
@@ -340,7 +328,8 @@ import "../styles/global.css";
 						realidad.
 					</p>
 					<button
-						class="px-10 py-4 bg-gradient-to-r from-violet-500 to-purple-600 hover:from-violet-600 hover:to-purple-700 rounded-lg font-semibold transition transform hover:scale-105 text-lg"
+						data-contact-modal
+						class="px-10 py-4 bg-gradient-to-r from-violet-500 to-purple-600 hover:from-violet-600 hover:to-purple-700 rounded-lg font-semibold transition transform hover:scale-105 text-lg cursor-pointer"
 					>
 						Solicitar Consultoría Gratis
 					</button>
@@ -435,3 +424,5 @@ import "../styles/global.css";
 		</div>
 	</footer>
 </div>
+
+<ContactModal />
