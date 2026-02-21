@@ -1,12 +1,17 @@
 import nodemailer from "nodemailer";
 
+const responseHeaders = {
+  "Content-Type": "application/json",
+  "Access-Control-Allow-Origin": "*",
+};
+
 export default async (req, context) => {
   // Permitir solo POST
   if (req.method !== "POST") {
-    return {
-      statusCode: 405,
-      body: JSON.stringify({ error: "Método no permitido" }),
-    };
+    return new Response(
+      JSON.stringify({ error: "Método no permitido" }),
+      { status: 405, headers: responseHeaders }
+    );
   }
 
   try {
@@ -14,10 +19,10 @@ export default async (req, context) => {
 
     // Validar campos
     if (!name || !email || !message) {
-      return {
-        statusCode: 400,
-        body: JSON.stringify({ error: "Faltan campos obligatorios" }),
-      };
+      return new Response(
+        JSON.stringify({ error: "Faltan campos obligatorios" }),
+        { status: 400, headers: responseHeaders }
+      );
     }
 
     // Configurar transportador de email
@@ -63,21 +68,21 @@ export default async (req, context) => {
     await transporter.sendMail(adminMailOptions);
     await transporter.sendMail(userMailOptions);
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify({
+    return new Response(
+      JSON.stringify({
         success: true,
         message: "Email enviado correctamente",
       }),
-    };
+      { status: 200, headers: responseHeaders }
+    );
   } catch (error) {
     console.error("Error al enviar email:", error);
-    return {
-      statusCode: 500,
-      body: JSON.stringify({
+    return new Response(
+      JSON.stringify({
         error: "Error al enviar el email",
         details: error.message,
       }),
-    };
+      { status: 500, headers: responseHeaders }
+    );
   }
 };
