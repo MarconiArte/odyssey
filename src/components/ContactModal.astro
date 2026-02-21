@@ -19,7 +19,12 @@
       </div>
     </div>
     
-    <form id="contactForm" class="space-y-4">
+    <form id="contactForm" class="space-y-4" data-netlify="true" netlify-honeypot="bot-field">
+      <!-- Honeypot anti-spam field (invisible para humanos, visible para bots) -->
+      <p class="hidden">
+        <label>No llenes esto si sos humano: <input name="bot-field" /></label>
+      </p>
+
       <div>
         <label class="block text-sm font-semibold text-gray-300 mb-2">Nombre</label>
         <input

@@ -15,7 +15,20 @@ export default async (req, context) => {
   }
 
   try {
-    const { name, email, project, message } = JSON.parse(req.body);
+    const body = await req.json();
+    const { name, email, project, message, "bot-field": botField } = body;
+
+    // Protección contra bots - si el honeypot fue completado, es un bot
+    if (botField && botField.trim() !== "") {
+      console.warn("🚨 Posible bot detectado - honeypot completado");
+      return new Response(
+        JSON.stringify({
+          success: true, // Fingir éxito para confundir a bots
+          message: "Email enviado correctamente",
+        }),
+        { status: 200, headers: responseHeaders }
+      );
+    }
 
     // Validar campos
     if (!name || !email || !message) {
