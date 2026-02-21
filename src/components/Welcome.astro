@@ -8,29 +8,59 @@ import "../styles/global.css";
 		class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-violet-500/20"
 	>
 		<div
-			class="max-w-7xl mx-auto px-6 lg:px-8 py-4 flex justify-between items-center"
+			class="max-w-7xl mx-auto px-6 lg:px-8 py-6 flex justify-between items-center"
 		>
 			<div
-				class="text-2xl font-bold bg-gradient-to-r from-violet-400 to-purple-600 bg-clip-text text-transparent"
+				class="text-4xl font-bold bg-gradient-to-r from-violet-400 to-purple-600 bg-clip-text text-transparent"
 			>
 				odysseydev
 			</div>
+			<!-- Menu Desktop -->
 			<ul class="hidden md:flex gap-8">
 				<li>
-					<a href="#about" class="hover:text-violet-400 transition"
+					<a href="#about" class="text-lg hover:text-violet-400 transition"
 						>Sobre Nosotros</a>
 				</li>
 				<li>
-					<a href="#services" class="hover:text-violet-400 transition"
+					<a href="#services" class="text-lg hover:text-violet-400 transition"
 						>Servicios</a>
 				</li>
 				<li>
 					<a
 						href="#portfolio"
-						class="hover:text-violet-400 transition">Portafolio</a>
+						class="text-lg hover:text-violet-400 transition">Portafolio</a>
 				</li>
 				<li>
-					<a href="#contact" class="hover:text-violet-400 transition"
+					<a href="#contact" class="text-lg hover:text-violet-400 transition"
+						>Contacto</a>
+				</li>
+			</ul>
+
+			<!-- Hamburger Button Mobile -->
+			<button id="mobileMenuBtn" class="md:hidden text-violet-400 hover:text-violet-300 transition">
+				<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+				</svg>
+			</button>
+		</div>
+
+		<!-- Menu Mobile -->
+		<div id="mobileMenu" class="hidden md:hidden bg-black/95 border-t border-violet-500/20">
+			<ul class="flex flex-col gap-4 px-6 py-4">
+				<li>
+					<a href="#about" class="text-lg hover:text-violet-400 transition block"
+						>Sobre Nosotros</a>
+				</li>
+				<li>
+					<a href="#services" class="text-lg hover:text-violet-400 transition block"
+						>Servicios</a>
+				</li>
+				<li>
+					<a href="#portfolio" class="text-lg hover:text-violet-400 transition block"
+						>Portafolio</a>
+				</li>
+				<li>
+					<a href="#contact" class="text-lg hover:text-violet-400 transition block"
 						>Contacto</a>
 				</li>
 			</ul>
@@ -77,11 +107,12 @@ import "../styles/global.css";
 						>
 							Comenzar Proyecto
 						</a>
-						<button
+						<a
+							href="#portfolio"
 							class="px-8 py-4 border border-violet-500 text-violet-400 hover:bg-violet-500/10 rounded-lg font-semibold transition cursor-pointer"
 						>
 							Ver Portafolio
-						</button>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -139,11 +170,11 @@ import "../styles/global.css";
 			<!-- Team Section -->
 			<div class="mt-16 pt-16 border-t border-violet-500/20">
 				<h3 class="text-3xl font-bold mb-8 text-center text-violet-300">
-					Nuestro Equipo
+					Equipo
 				</h3>
 				<div class="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
 					<div
-						class="p-8 bg-gradient-to-br from-purple-900/30 to-violet-900/30 border border-violet-500/30 rounded-xl hover:border-violet-500/60 transition"
+						class="p-8 bg-gradient-to-bl from-gray-900 to-black border border-violet-500/20 rounded-xl hover:border-violet-500/60 transition"
 					>
 						<div class="text-5xl mb-4">💻</div>
 						<h4 class="text-2xl font-bold mb-2 text-violet-300">
@@ -153,11 +184,11 @@ import "../styles/global.css";
 							Desarrollador
 						</p>
 						<p class="text-gray-400">
-							Experto en tecnologías web modernas. Responsable de la arquitectura y desarrollo de nuestros proyectos.
+							Experto en tecnologías web modernas. Responsable de la arquitectura y desarrollo de proyectos.
 						</p>
 					</div>
 					<div
-						class="p-8 bg-gradient-to-br from-purple-900/30 to-violet-900/30 border border-violet-500/30 rounded-xl hover:border-violet-500/60 transition"
+						class="p-8 bg-gradient-to-tr from-gray-900 to-black border border-violet-500/20 rounded-xl hover:border-violet-500/60 transition"
 					>
 						<div class="text-5xl mb-4">📈</div>
 						<h4 class="text-2xl font-bold mb-2 text-violet-300">
@@ -182,11 +213,11 @@ import "../styles/global.css";
 	>
 		<div class="max-w-7xl mx-auto">
 			<h2 class="text-4xl md:text-5xl font-bold mb-12 text-center">
-				Nuestros Servicios
+				Servicios
 			</h2>
 			<div class="grid md:grid-cols-2 gap-8">
 				<div
-					class="p-8 bg-gradient-to-br from-purple-900/20 to-violet-900/20 border border-violet-500/30 rounded-xl overflow-hidden"
+					class="p-8 bg-gradient-to-br from-gray-900 to-black border border-violet-500/20 rounded-xl"
 				>
 					<h3
 						class="text-2xl font-bold mb-4 text-violet-300"
@@ -199,7 +230,7 @@ import "../styles/global.css";
 					</p>
 				</div>
 				<div
-					class="p-8 bg-gradient-to-br from-purple-900/20 to-violet-900/20 border border-violet-500/30 rounded-xl overflow-hidden"
+					class="p-8 bg-gradient-to-bl from-gray-900 to-black border border-violet-500/20 rounded-xl"
 				>
 					<h3
 						class="text-2xl font-bold mb-4 text-violet-300"
@@ -212,7 +243,7 @@ import "../styles/global.css";
 					</p>
 				</div>
 				<div
-					class="p-8 bg-gradient-to-br from-purple-900/20 to-violet-900/20 border border-violet-500/30 rounded-xl overflow-hidden"
+					class="p-8 bg-gradient-to-tl from-gray-900 to-black border border-violet-500/20 rounded-xl"
 				>
 					<h3
 						class="text-2xl font-bold mb-4 text-violet-300"
@@ -225,7 +256,7 @@ import "../styles/global.css";
 					</p>
 				</div>
 				<div
-					class="p-8 bg-gradient-to-br from-purple-900/20 to-violet-900/20 border border-violet-500/30 rounded-xl overflow-hidden"
+					class="p-8 bg-gradient-to-tr from-gray-900 to-black border border-violet-500/20 rounded-xl"
 				>
 					<h3
 						class="text-2xl font-bold mb-4 text-violet-300"
@@ -248,7 +279,7 @@ import "../styles/global.css";
 	>
 		<div class="max-w-7xl mx-auto">
 			<h2 class="text-4xl md:text-5xl font-bold mb-12 text-center">
-				Nuestro Portafolio
+				Portafolio
 			</h2>
 			<div class="grid md:grid-cols-2 gap-12 items-center">
 				<!-- Contenido -->
@@ -294,7 +325,7 @@ import "../styles/global.css";
 				<!-- Imagen -->
 				<div class="relative overflow-hidden rounded-2xl">
 					<div
-						class="aspect-square bg-gradient-to-br from-violet-600/30 to-purple-600/30 border border-violet-500/30 rounded-2xl p-8 flex items-center justify-center"
+						class="aspect-square bg-gradient-to-bl from-gray-900 to-black border border-violet-500/20 rounded-2xl p-8 flex items-center justify-center"
 					>
 						<div class="text-center">
 							<div class="text-8xl mb-4">📅</div>
@@ -402,16 +433,12 @@ import "../styles/global.css";
 					</h4>
 					<ul class="text-gray-400 space-y-2">
 						<li>
-							<a href="#" class="hover:text-violet-400 transition"
-								>Twitter</a>
+							<a href="https://tiktok.com/@odysseydev" target="_blank" class="hover:text-violet-400 transition"
+								>TikTok</a>
 						</li>
 						<li>
-							<a href="#" class="hover:text-violet-400 transition"
-								>LinkedIn</a>
-						</li>
-						<li>
-							<a href="#" class="hover:text-violet-400 transition"
-								>GitHub</a>
+							<a href="https://instagram.com/odysseydev" target="_blank" class="hover:text-violet-400 transition"
+								>Instagram</a>
 						</li>
 					</ul>
 				</div>
@@ -424,3 +451,22 @@ import "../styles/global.css";
 		</div>
 	</footer>
 </div>
+
+<script is:inline>
+	// Mobile menu toggle
+	const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+	const mobileMenu = document.getElementById('mobileMenu');
+	const mobileLinks = mobileMenu.querySelectorAll('a');
+
+	// Toggle menu
+	mobileMenuBtn.addEventListener('click', () => {
+		mobileMenu.classList.toggle('hidden');
+	});
+
+	// Cerrar menu al clickear un link
+	mobileLinks.forEach(link => {
+		link.addEventListener('click', () => {
+			mobileMenu.classList.add('hidden');
+		});
+	});
+</script>
