@@ -1,0 +1,95 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<div id="contact-form" class="glass-card p-8 rounded-3xl max-w-2xl mx-auto">
+	<h3 class="text-2xl font-bold mb-6">Envíanos tu consulta</h3>
+	<form id="form" class="flex flex-col gap-4">
+		<div>
+			<label for="name" class="block text-sm font-medium mb-2">Tu nombre</label>
+			<input
+				type="text"
+				id="name"
+				name="name"
+				required
+				class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-white placeholder-slate-500 focus:outline-none focus:border-[#7f13ec] transition-colors"
+				placeholder="Tu nombre completo"
+			/>
+		</div>
+		<div>
+			<label for="email" class="block text-sm font-medium mb-2">Tu email</label>
+			<input
+				type="email"
+				id="email"
+				name="email"
+				required
+				class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-white placeholder-slate-500 focus:outline-none focus:border-[#7f13ec] transition-colors"
+				placeholder="tu@email.com"
+			/>
+		</div>
+		<div>
+			<label for="message" class="block text-sm font-medium mb-2">Tu mensaje</label>
+			<textarea
+				id="message"
+				name="message"
+				required
+				rows="5"
+				class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-white placeholder-slate-500 focus:outline-none focus:border-[#7f13ec] transition-colors resize-none"
+				placeholder="Cuéntanos sobre tu proyecto..."
+			></textarea>
+		</div>
+		<button
+			type="submit"
+			class="w-full bg-[#7f13ec] hover:bg-[#6d0ec8] text-white font-bold py-3 rounded-lg transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
+		>
+			<Icon name="lucide:send" class="w-5 h-5" />
+			Enviar Mensaje
+		</button>
+		<div id="status" class="text-sm text-center hidden"></div>
+	</form>
+</div>
+
+<script>
+	const form = document.getElementById('form') as HTMLFormElement;
+	const statusDiv = document.getElementById('status') as HTMLElement;
+
+	form.addEventListener('submit', async (e) => {
+		e.preventDefault();
+
+		const formData = new FormData(form);
+		const data = {
+			name: formData.get('name'),
+			email: formData.get('email'),
+			message: formData.get('message'),
+		};
+
+		try {
+			statusDiv.textContent = 'Enviando...';
+			statusDiv.className = 'text-sm text-center text-slate-400';
+
+			const response = await fetch('/api/contact.json', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(data),
+			});
+
+			const result = await response.json();
+
+			if (response.ok) {
+				form.reset();
+				statusDiv.textContent = '✅ ¡Mensaje enviado! Te contactaremos pronto.';
+				statusDiv.className = 'text-sm text-center text-green-400 font-medium';
+				setTimeout(() => {
+					statusDiv.classList.add('hidden');
+				}, 3000);
+			} else {
+				statusDiv.textContent = `❌ Error: ${result.error}`;
+				statusDiv.className = 'text-sm text-center text-red-400 font-medium';
+			}
+		} catch (error) {
+			statusDiv.textContent = '❌ Error al enviar el mensaje';
+			statusDiv.className = 'text-sm text-center text-red-400 font-medium';
+			console.error('Error:', error);
+		}
+	});
+</script>

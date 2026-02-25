@@ -1,0 +1,19 @@
+---
+interface Props {
+  size?: 'sm' | 'md' | 'lg';
+}
+
+const { size = 'md' } = Astro.props;
+
+const sizeMap = {
+  sm: 'h-8 w-8',
+  md: 'h-12 w-12',
+  lg: 'h-16 w-16',
+};
+---
+
+<img 
+  src="/odysseylogo.webp" 
+  alt="odysseydev" 
+  class={`${sizeMap[size]} object-cover rounded-md`}
+/>
