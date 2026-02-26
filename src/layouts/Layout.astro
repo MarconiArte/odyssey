@@ -26,6 +26,13 @@ const { title = 'OdysseyDev - Desarrollo Web', description = 'Agencia de desarro
     <script is:inline>
       if (window.netlifyIdentity) {
         window.netlifyIdentity.init();
+        
+        // Detectar si hay un token de invitacion en la URL
+        const hash = window.location.hash;
+        if (hash && hash.includes('invite_token')) {
+          // Abrir el modal automaticamente si hay un token de invitacion
+          window.netlifyIdentity.open('signup');
+        }
       }
     </script>
   </body>
