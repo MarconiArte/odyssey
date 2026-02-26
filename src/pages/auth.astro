@@ -3,26 +3,33 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Crear Cuenta">
-  <main style="max-width: 400px; margin: 50px auto; padding: 20px;">
-    <h1>Crear Cuenta o Iniciar Sesión</h1>
-    <div data-netlify-identity-menu></div>
-    <p style="margin-top: 30px; color: #666; font-size: 14px;">
-      Crea tu cuenta aquí para acceder al panel de administración.
-    </p>
+  <main style="max-width: 600px; margin: 50px auto; padding: 20px;">
+    <h1>Acceso al Panel de Administración</h1>
+    
+    <!-- Contenedor para el widget -->
+    <div id="netlify-modal" style="min-height: 400px;"></div>
+
     <p style="margin-top: 20px;">
       <a href="/" style="color: #7f13ec; text-decoration: none;">← Volver al inicio</a>
     </p>
   </main>
 
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  <script is:inline>
+  <script is:inline define:vars={{}}>
     if (window.netlifyIdentity) {
-      window.netlifyIdentity.init();
+      window.netlifyIdentity.init({
+        container: '#netlify-modal'
+      });
+      
+      // Abrir el widget de signup automáticamente
+      window.netlifyIdentity.open('signup');
       
       // Cuando el usuario se loguea exitosamente, redirigir a /admin
       window.netlifyIdentity.on('login', (user) => {
         console.log('Usuario logueado:', user);
-        window.location.href = '/admin';
+        setTimeout(() => {
+          window.location.href = '/admin';
+        }, 500);
       });
     }
   </script>
