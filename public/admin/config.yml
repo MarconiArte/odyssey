@@ -1,0 +1,19 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "src/assets/images"
+public_folder: "/src/assets/images"
+
+collections:
+  - name: "paginas"
+    label: "Páginas"
+    folder: "src/content/landings"
+    create: true
+    format: "json"
+    fields:
+      - { label: "Título de la Página", name: "title", widget: "string" }
+      - { label: "Descripción", name: "description", widget: "text" }
+      - { label: "Imagen de Portada", name: "image", widget: "image" }
+      - { label: "Contenido", name: "body", widget: "markdown" }
+      - { label: "Publicado", name: "published", widget: "boolean", default: true }

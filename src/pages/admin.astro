@@ -1,0 +1,43 @@
+---
+---
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>Panel de Administración - Netlify CMS</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/decap-cms@^3.0.0/dist/decap-cms.css" />
+  </head>
+  <body>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <script>
+      window.CMS_CONFIG = {
+        backend: {
+          name: 'git-gateway',
+          branch: 'master'
+        },
+        media_folder: 'src/assets/images',
+        public_folder: '/src/assets/images',
+        collections: [
+          {
+            name: 'paginas',
+            label: 'Páginas',
+            folder: 'src/content/landings',
+            create: true,
+            format: 'json',
+            fields: [
+              { label: 'Título de la Página', name: 'title', widget: 'string' },
+              { label: 'Descripción', name: 'description', widget: 'text' },
+              { label: 'Imagen de Portada', name: 'image', widget: 'image' },
+              { label: 'Contenido', name: 'body', widget: 'markdown' },
+              { label: 'Publicado', name: 'published', widget: 'boolean', default: true }
+            ]
+          }
+        ]
+      };
+    </script>
+  </body>
+</html>
