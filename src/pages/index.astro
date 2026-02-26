@@ -6,29 +6,22 @@ import Welcome from '../components/Welcome.astro';
 <Layout title="OdysseyDev - Desarrollo Web Premium">
 	<Welcome />
 	
-	<!-- Widget de Netlify Identity -->
-	<div id="netlify-modal" style="position: fixed; bottom: 20px; right: 20px; min-width: 350px; max-height: 80vh; overflow-y: auto; display: none;"></div>
+	<script is:inline src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 	
-	<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 	<script is:inline>
 		if (window.netlifyIdentity) {
-			window.netlifyIdentity.init({
-				container: '#netlify-modal'
-			});
+			// 1. Inicialización limpia (sin contenedores)
+			window.netlifyIdentity.init();
 			
-			// Si hay invite_token en la URL, abrir el widget
-			const hash = window.location.hash;
-			if (hash && hash.includes('invite_token')) {
-				document.getElementById('netlify-modal').style.display = 'block';
-				window.netlifyIdentity.open('signup');
+			// 2. Si detecta un token en la URL (invitación o recuperación), se abre solo
+			// Pero por seguridad, forzamos la apertura si hay un hash
+			if (window.location.hash) {
+				window.netlifyIdentity.open();
 			}
 			
-			// Cuando el usuario se loguea, redirigir a /admin
-			window.netlifyIdentity.on('login', (user) => {
-				console.log('Usuario logueado:', user);
-				setTimeout(() => {
-					window.location.href = '/admin';
-				}, 500);
+			// 3. Redirección al loguearse
+			window.netlifyIdentity.on('login', () => {
+				document.location.href = '/admin/';
 			});
 		}
 	</script>
