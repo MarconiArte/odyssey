@@ -13,7 +13,25 @@
   <body>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-    <script>
+    <script is:inline>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.init();
+        
+        // Si no hay usuario logueado, abrir el modal de signup
+        window.netlifyIdentity.on('init', (user) => {
+          if (!user) {
+            // Abrir signup en lugar de login para permitir crear cuenta
+            window.netlifyIdentity.open('signup');
+          }
+        });
+        
+        // Detectar si hay un token de invitacion en el hash
+        const hash = window.location.hash;
+        if (hash && hash.includes('invite_token')) {
+          window.netlifyIdentity.open('signup');
+        }
+      }
+
       window.CMS_CONFIG = {
         backend: {
           name: 'git-gateway',
