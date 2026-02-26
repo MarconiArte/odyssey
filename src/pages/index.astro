@@ -10,16 +10,15 @@ import Welcome from '../components/Welcome.astro';
 	
 	<script is:inline>
 		if (window.netlifyIdentity) {
-			// 1. Inicialización limpia (sin contenedores)
+			// Inicializar sin parámetros extraños
 			window.netlifyIdentity.init();
 			
-			// 2. Si detecta un token en la URL (invitación o recuperación), se abre solo
-			// Pero por seguridad, forzamos la apertura si hay un hash
-			if (window.location.hash) {
-				window.netlifyIdentity.open();
+			// Forzar apertura si detecta el token de invitación en la URL
+			if (window.location.hash.includes("invite_token")) {
+				window.netlifyIdentity.open("signup");
 			}
 			
-			// 3. Redirección al loguearse
+			// Redirigir al éxito
 			window.netlifyIdentity.on('login', () => {
 				document.location.href = '/admin/';
 			});
