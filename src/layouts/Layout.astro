@@ -23,16 +23,5 @@ const { title = 'OdysseyDev - Desarrollo Web', description = 'Agencia de desarro
     <div data-netlify-identity-menu></div>
     <slot />
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    <script is:inline>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.init();
-      }
-      
-      // Si hay un token de invitacion en la URL, redirigir a /admin con el token
-      const hash = window.location.hash;
-      if (hash && hash.includes('invite_token')) {
-        window.location.href = '/admin' + hash;
-      }
-    </script>
   </body>
 </html>

@@ -7,55 +7,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex" />
-    <title>Panel de Administración - Netlify CMS</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/decap-cms@^3.0.0/dist/decap-cms.css" />
+    <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
+    <title>Panel de Administración</title>
   </head>
   <body>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-    <script is:inline>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.init();
-        
-        // Si no hay usuario logueado, abrir el modal de signup
-        window.netlifyIdentity.on('init', (user) => {
-          if (!user) {
-            // Abrir signup en lugar de login para permitir crear cuenta
-            window.netlifyIdentity.open('signup');
-          }
-        });
-        
-        // Detectar si hay un token de invitacion en el hash
-        const hash = window.location.hash;
-        if (hash && hash.includes('invite_token')) {
-          window.netlifyIdentity.open('signup');
-        }
-      }
-
-      window.CMS_CONFIG = {
-        backend: {
-          name: 'git-gateway',
-          branch: 'master'
-        },
-        media_folder: 'src/assets/images',
-        public_folder: '/src/assets/images',
-        collections: [
-          {
-            name: 'paginas',
-            label: 'Páginas',
-            folder: 'src/content/landings',
-            create: true,
-            format: 'json',
-            fields: [
-              { label: 'Título de la Página', name: 'title', widget: 'string' },
-              { label: 'Descripción', name: 'description', widget: 'text' },
-              { label: 'Imagen de Portada', name: 'image', widget: 'image' },
-              { label: 'Contenido', name: 'body', widget: 'markdown' },
-              { label: 'Publicado', name: 'published', widget: 'boolean', default: true }
-            ]
-          }
-        ]
-      };
-    </script>
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   </body>
 </html>
