@@ -1,0 +1,21 @@
+{
+	"siteId": "808fbe72-6961-4624-acec-5467aac808b9",
+	"geolocation": {
+		"data": {
+			"city": "La Plata",
+			"country": {
+				"code": "AR",
+				"name": "Argentina"
+			},
+			"subdivision": {
+				"code": "B",
+				"name": "Buenos Aires"
+			},
+			"timezone": "America/Argentina/Buenos_Aires",
+			"latitude": -34.9309,
+			"longitude": -57.9417,
+			"postalCode": "1900"
+		},
+		"timestamp": 1772106801753
+	}
+}

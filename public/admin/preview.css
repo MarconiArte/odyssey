@@ -1,0 +1,68 @@
+/* Personalización de Decap CMS - Odyssey */
+
+/* Variables de color */
+:root {
+  --color-primary: #7f13ec;
+  --color-primary-light: #9333ea;
+  --color-primary-dark: #6d0eb8;
+}
+
+/* Botones principales */
+.Button {
+  background-color: var(--color-primary) !important;
+}
+
+.Button:hover {
+  background-color: var(--color-primary-dark) !important;
+}
+
+/* Botones secundarios */
+.Styled__Button {
+  background-color: var(--color-primary) !important;
+}
+
+/* Links y acentos */
+a {
+  color: var(--color-primary) !important;
+}
+
+a:hover {
+  color: var(--color-primary-dark) !important;
+}
+
+/* Inputs y focus */
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 2px rgba(127, 19, 236, 0.2) !important;
+}
+
+/* Headers */
+h1, h2, h3, h4, h5, h6 {
+  color: rgba(0, 0, 0, 0.87);
+}
+
+/* Tabs activos */
+.nc-tab__item--active {
+  border-bottom-color: var(--color-primary) !important;
+  color: var(--color-primary) !important;
+}
+
+/* Checkboxes y radios */
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
+  border-color: var(--color-primary) !important;
+  background-color: var(--color-primary) !important;
+}
+
+/* Elementos de lista seleccionados */
+.nc-collectionListItem__active {
+  background-color: rgba(127, 19, 236, 0.1) !important;
+  border-left-color: var(--color-primary) !important;
+}
+
+/* Hover en elementos */
+.nc-collectionListItem:hover {
+  background-color: rgba(127, 19, 236, 0.05) !important;
+}
