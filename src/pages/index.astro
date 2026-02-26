@@ -9,18 +9,31 @@ import Welcome from '../components/Welcome.astro';
 	<script is:inline src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 	
 	<script is:inline>
-		if (window.netlifyIdentity) {
-			// Inicializar sin parámetros extraños
-			window.netlifyIdentity.init();
-			
-			// Forzar apertura si detecta el token de invitación en la URL
-			if (window.location.hash.includes("invite_token")) {
-				window.netlifyIdentity.open("signup");
+		// Esperamos a que el widget esté realmente disponible
+		function checkIdentity() {
+			if (window.netlifyIdentity) {
+				window.netlifyIdentity.init();
+				
+				// Solo si hay token de invitación, forzamos la apertura
+				if (window.location.hash.includes("invite_token")) {
+					console.log("Token detectado, abriendo modal...");
+					// Le damos un respiro para que cargue los estilos CSS del modal
+					setTimeout(() => {
+						window.netlifyIdentity.open("signup");
+					}, 800);
+				}
+			} else {
+				// Si no está listo, reintentamos en 100ms
+				setTimeout(checkIdentity, 100);
 			}
-			
-			// Redirigir al éxito
+		}
+
+		checkIdentity();
+
+		// Redirección al loguearse
+		if (window.netlifyIdentity) {
 			window.netlifyIdentity.on('login', () => {
-				document.location.href = '/admin/';
+				window.location.href = '/admin/';
 			});
 		}
 	</script>
