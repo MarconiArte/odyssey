@@ -22,5 +22,10 @@ const { title = 'OdysseyDev - Desarrollo Web', description = 'Agencia de desarro
   <body>
     <slot />
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script is:inline>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.init();
+      }
+    </script>
   </body>
 </html>
